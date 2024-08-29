@@ -11,11 +11,7 @@ import Link from "next/link"
 import { MenuIcon } from "lucide-react"
 import LoginButton from "./auth/login-button"
 
-export default function Menu({
-  navLinks,
-}: {
-  navLinks: { name: string; path: string }[]
-}) {
+export default function Menu({ navLinks }: { navLinks: { name: string; path: string }[] }) {
   return (
     <div className="block sm:hidden">
       <Menubar>
@@ -24,7 +20,7 @@ export default function Menu({
             <MenuIcon size={20} />
           </MenubarTrigger>
           <MenubarContent>
-            {navLinks.map((link) => (
+            {navLinks.map(link => (
               <MenubarItem key={link.name}>
                 <Link href={link.path}>{link.name}</Link>
               </MenubarItem>

@@ -24,9 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn("h-full w-full border border-red-500", inter.className)}
-      >
+      <body className={cn("h-full w-full", inter.className)}>
         <Navbar />
         {children}
       </body>

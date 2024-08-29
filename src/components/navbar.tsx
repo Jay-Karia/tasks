@@ -17,7 +17,7 @@ export default function Navbar() {
           <Logo />
         </Link>
         <div className="hidden sm:flex">
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <Button variant={"link"} asChild key={link.name}>
               <Link href={link.path}>{link.name}</Link>
             </Button>
