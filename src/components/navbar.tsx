@@ -1,14 +1,14 @@
-import Logo from "./logo"
-import Link from "next/link"
-import { Button } from "./ui/button"
-import LoginButton from "./auth/login-button"
-import Menu from "./menu"
+import Logo from "./logo";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import LoginButton from "./auth/login-button";
+import Menu from "./menu";
 
 export default function Navbar() {
   const navLinks = [
     { name: "Add Task", path: "/add" },
     { name: "Tasks", path: "/tasks" },
-  ]
+  ];
 
   return (
     <nav className="flex h-12 items-center justify-around border-b">
@@ -29,5 +29,5 @@ export default function Navbar() {
       </div>
       <Menu navLinks={navLinks} />
     </nav>
-  )
+  );
 }

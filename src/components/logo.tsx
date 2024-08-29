@@ -1,10 +1,10 @@
-import Image from "next/image"
-import localFont from "next/font/local"
-import { cn } from "@/lib/utils"
+import Image from "next/image";
+import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
 const primaryFont = localFont({
   src: "../../public/fonts/font.woff2",
-})
+});
 
 export default function Logo() {
   return (
@@ -19,5 +19,5 @@ export default function Logo() {
         Tasks
       </h4>
     </div>
-  )
+  );
 }

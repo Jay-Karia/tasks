@@ -5,11 +5,11 @@ import {
   MenubarMenu,
   MenubarSeparator,
   MenubarTrigger,
-} from "@/components/ui/menubar"
-import Link from "next/link"
+} from "@/components/ui/menubar";
+import Link from "next/link";
 
-import { MenuIcon } from "lucide-react"
-import LoginButton from "./auth/login-button"
+import { MenuIcon } from "lucide-react";
+import LoginButton from "./auth/login-button";
 
 export default function Menu({ navLinks }: { navLinks: { name: string; path: string }[] }) {
   return (
@@ -31,5 +31,5 @@ export default function Menu({ navLinks }: { navLinks: { name: string; path: str
         </MenubarMenu>
       </Menubar>
     </div>
-  )
+  );
 }

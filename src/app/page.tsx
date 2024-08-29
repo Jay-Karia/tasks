@@ -1,12 +1,12 @@
-import localFont from "next/font/local"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { FaGithub } from "react-icons/fa"
+import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
 
 const primaryFont = localFont({
   src: "../../public/fonts/font.woff2",
-})
+});
 
 export default function Home() {
   return (
@@ -27,12 +27,12 @@ export default function Home() {
           <Link href="/add">Add Task</Link>
         </Button>
         <Button size={"sm"} variant={"outline"} asChild>
-          <Link href="https://github.com/Jay-Karia/tasks">
+          <Link href="https://github.com/Jay-Karia/tasks" target="_blank">
             <FaGithub className="mr-2" />
             Source
           </Link>
         </Button>
       </div>
     </div>
-  )
+  );
 }
