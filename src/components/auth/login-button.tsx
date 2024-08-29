@@ -10,7 +10,7 @@ export default async function LoginButton() {
 
   return (
     <div>
-      {session && session?.user ? (
+      {session && session.user ? (
         <div className="flex items-center justify-center">
           <UserAvatar />
           <SignoutForm />
