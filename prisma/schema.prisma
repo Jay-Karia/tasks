@@ -10,10 +10,10 @@ datasource db {
 model Task {
   id        String  @id @default(auto()) @db.ObjectId @map("_id")
   title     String
-  description String?
+  description String
   completed Boolean @default(false)
-  list      List?   @relation(fields: [listId], references: [id])
-  listId    String? @map("list_id") @db.ObjectId
+  list      List   @relation(fields: [listId], references: [id])
+  listId    String @map("list_id") @db.ObjectId
 }
 
 model List {

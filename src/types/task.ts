@@ -1,12 +1,9 @@
-import { List } from "./list";
-
 type Task = {
   id: string;
   title: string;
-  description?: string;
+  description: string;
   completed: boolean;
-  list: List;
-  listId: string;
+  listId?: string;
 };
 
 export type { Task };
