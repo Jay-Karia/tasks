@@ -12,11 +12,11 @@ export default function Navbar() {
 
   return (
     <nav className="flex h-12 items-center justify-around border-b">
-      <div className="items-center gap-4 flex">
+      <div className="flex items-center gap-4">
         <Link href="/">
           <Logo />
         </Link>
-        <div className="sm:flex hidden">
+        <div className="hidden sm:flex">
           {navLinks.map((link) => (
             <Button variant={"link"} asChild key={link.name}>
               <Link href={link.path}>{link.name}</Link>
@@ -25,9 +25,9 @@ export default function Navbar() {
         </div>
       </div>
       <div className="hidden sm:block">
-      <LoginButton />
+        <LoginButton />
       </div>
-      <Menu navLinks={navLinks}/>
+      <Menu navLinks={navLinks} />
     </nav>
   )
 }

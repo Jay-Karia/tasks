@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Welcome to Tasks</>
+  return <div className="h-max">Welcome to Tasks</div>
 }
