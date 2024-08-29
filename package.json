@@ -9,7 +9,9 @@
     "lint": "next lint",
     "format": "prettier --write src/**/*.*",
     "format:all": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "master": "npm run format && npm run lint && npm run build && npm start",
+    "db:push": "prisma db push"
   },
   "dependencies": {
     "@prisma/client": "^5.19.0",
