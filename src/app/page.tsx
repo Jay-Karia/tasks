@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import TasksOverview from "@/components/tasks-overview";
 
 const primaryFont = localFont({
   src: "../../public/fonts/font.woff2",
@@ -33,6 +34,8 @@ export default function Home() {
           </Link>
         </Button>
       </div>
+
+      <TasksOverview />
     </div>
   );
 }

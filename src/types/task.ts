@@ -3,7 +3,9 @@ type Task = {
   title: string;
   description: string;
   completed: boolean;
-  listId?: string;
+  listId: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type { Task };

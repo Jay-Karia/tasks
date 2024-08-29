@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import { cn } from "@/lib/utils";
+import QueryProvider from "@/components/providers/QueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("h-full w-full", inter.className)}>
-        <Navbar />
-        {children}
+        <QueryProvider>
+          <Navbar />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

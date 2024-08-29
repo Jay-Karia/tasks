@@ -7,6 +7,7 @@ export async function createList(title: string): Promise<List> {
   return await prisma.list.create({
     data: {
       title,
+      userId: "",
     },
   });
 }

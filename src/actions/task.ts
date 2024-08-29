@@ -14,6 +14,7 @@ export async function createTask(
       description,
       listId,
       completed: false,
+      userId: "",
     },
   });
 }
