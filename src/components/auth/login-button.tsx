@@ -1,16 +1,25 @@
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
+"use server";
 
-export default function LoginButton() {
+import { auth } from "@/auth";
+import LoginForm from "./login-form";
+import SignoutForm from "./signout-form";
+import UserAvatar from "./user-avatar";
+
+export default async function LoginButton() {
+  const session = await auth();
+
   return (
     <div>
-      <Button variant={"secondary"} size={"sm"} asChild>
-        <Link href="/login">
-          <FcGoogle className="mr-2" />
-          Login
-        </Link>
-      </Button>
+      {session && session?.user ? (
+        <div className="flex items-center justify-center">
+          <UserAvatar />
+          <SignoutForm />
+        </div>
+      ) : (
+        <div>
+          <LoginForm />
+        </div>
+      )}
     </div>
   );
 }
