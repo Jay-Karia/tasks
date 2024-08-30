@@ -1,7 +1,7 @@
 import { List } from "@/types/list";
 import Link from "next/link";
 
-const TITLE_MAX_LENGTH = 20
+const TITLE_MAX_LENGTH = 20;
 
 export default function ListOverview({ list }: { list: List }) {
   if (!list.tasks) return null;
@@ -15,21 +15,26 @@ export default function ListOverview({ list }: { list: List }) {
   }
 
   function truncate(str: string) {
-    if (str.length > TITLE_MAX_LENGTH)
-      return str.substring(0, TITLE_MAX_LENGTH) +"..."
+    if (str.length > TITLE_MAX_LENGTH) return str.substring(0, TITLE_MAX_LENGTH) + "...";
 
-    return str
+    return str;
   }
 
   return (
-    <div className="flex sm:w-64 w-56 flex-col gap-4 rounded-lg border">
+    <div className="flex w-56 flex-col rounded-lg border sm:w-64">
       <Link href={`/list/${list.id}`}>
-        <div className="mb-2 border-b bg-purple-100 p-4 hover:cursor-pointer hover:bg-blue-100">
-          {truncate(list.title)}
+        <div className="mb-2 border-b bg-slate-100 p-4 hover:cursor-pointer hover:bg-blue-100">
+          <p className="leading-7 [&:not(:first-child)]:mt-6">{truncate(list.title)}</p>
         </div>
       </Link>
-      <span className="px-4">Completed: {getCompleted()}</span>
-      <span className="px-4 pb-8">Remaining: {getRemaining()}</span>
+      <div className="flex items-center gap-2 px-4 py-2">
+        <small className="text-sm font-medium leading-none">Completed: </small>
+        <p className="text-sm text-muted-foreground">{getCompleted()}</p>
+      </div>
+      <div className="mb-4 flex items-center gap-2 px-4 py-2">
+        <small className="text-sm font-medium leading-none">Remaining: </small>
+        <p className="text-sm text-muted-foreground">{getRemaining()}</p>
+      </div>
     </div>
   );
 }

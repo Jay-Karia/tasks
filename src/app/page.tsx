@@ -1,11 +1,10 @@
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import TasksOverview from "@/components/tasks-overview";
 import AddList from "@/components/add-list";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 const primaryFont = localFont({
   src: "../../public/fonts/font.woff2",
