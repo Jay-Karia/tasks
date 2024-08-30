@@ -1,7 +1,7 @@
 import { List } from "@/types/list";
 import Link from "next/link";
-
-const TITLE_MAX_LENGTH = 20;
+import { truncate } from "@/lib/truncate";
+import DeleteTaskButton from "./delete-task-button";
 
 export default function ListOverview({ list }: { list: List }) {
   if (!list.tasks) return null;
@@ -12,12 +12,6 @@ export default function ListOverview({ list }: { list: List }) {
 
   function getRemaining(): number | undefined {
     return list.tasks?.filter(item => item.completed === false).length;
-  }
-
-  function truncate(str: string) {
-    if (str.length > TITLE_MAX_LENGTH) return str.substring(0, TITLE_MAX_LENGTH) + "...";
-
-    return str;
   }
 
   return (
@@ -34,6 +28,9 @@ export default function ListOverview({ list }: { list: List }) {
       <div className="mb-4 flex items-center gap-2 px-4 py-2">
         <small className="text-sm font-medium leading-none">Remaining: </small>
         <p className="text-sm text-muted-foreground">{getRemaining()}</p>
+      </div>
+      <div className="flex w-full justify-end px-4 pb-2">
+        <DeleteTaskButton listId={list.id} />
       </div>
     </div>
   );
