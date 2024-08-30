@@ -12,7 +12,7 @@ const primaryFont = localFont({
 });
 
 export default async function Home() {
-  const session = await auth()
+  const session = await auth();
   return (
     <div className="mt-4 flex h-max w-full flex-col items-center justify-center">
       <div className="flex flex-col items-center">
@@ -27,11 +27,13 @@ export default async function Home() {
         <p className="text-center text-sm text-muted-foreground">A simple task manager.</p>
       </div>
       <div className="mt-8 flex gap-4">
-        {session && <AddList>
-          <div className={cn(buttonVariants({ variant: "primary", size: "sm", className: "" }))}>
-            Add List
-          </div>
-        </AddList>}
+        {session && (
+          <AddList>
+            <div className={cn(buttonVariants({ variant: "primary", size: "sm", className: "" }))}>
+              Add List
+            </div>
+          </AddList>
+        )}
         <Button size={"sm"} variant={"outline"} asChild>
           <Link href="https://github.com/Jay-Karia/tasks" target="_blank">
             <FaGithub className="mr-2" />
@@ -39,6 +41,7 @@ export default async function Home() {
           </Link>
         </Button>
       </div>
-      {session && <TasksOverview />}    </div>
+      {session && <TasksOverview />}{" "}
+    </div>
   );
 }

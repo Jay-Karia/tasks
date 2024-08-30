@@ -3,7 +3,7 @@ import { getList } from "@/actions/list";
 
 export async function getListOwner(id: string) {
   const list = await getList(id);
-  if (!list) return null
+  if (!list) return null;
 
   return list.userId;
 }

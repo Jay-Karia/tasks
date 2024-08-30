@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { auth } from "@/auth";
 
 export default async function Navbar() {
-  const session = await auth()
+  const session = await auth();
   const navLinks = [{ name: "All Tasks", path: "/tasks" }];
 
   return (
@@ -18,18 +18,20 @@ export default async function Navbar() {
           <Logo />
         </Link>
         <div className="hidden sm:flex">
-          {session && <>
-            <AddList>
-              <div className={cn(buttonVariants({ variant: "link", size: "sm", className: "" }))}>
-                Add List
-              </div>
-            </AddList>
-            {navLinks.map(link => (
-              <Button variant={"link"} asChild key={link.name}>
-                <Link href={link.path}>{link.name}</Link>
-              </Button>
-            ))}</>}
-
+          {session && (
+            <>
+              <AddList>
+                <div className={cn(buttonVariants({ variant: "link", size: "sm", className: "" }))}>
+                  Add List
+                </div>
+              </AddList>
+              {navLinks.map(link => (
+                <Button variant={"link"} asChild key={link.name}>
+                  <Link href={link.path}>{link.name}</Link>
+                </Button>
+              ))}
+            </>
+          )}
         </div>
       </div>
       <div className="hidden sm:block">
