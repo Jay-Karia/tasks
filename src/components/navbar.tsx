@@ -3,10 +3,12 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import LoginButton from "./auth/login-button";
 import Menu from "./menu";
+import AddList from "./add-list";
+import { buttonVariants } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const navLinks = [
-    { name: "Add List", path: "/add" },
     { name: "All Tasks", path: "/tasks" },
   ];
 
@@ -17,6 +19,11 @@ export default function Navbar() {
           <Logo />
         </Link>
         <div className="hidden sm:flex">
+          <AddList>
+          <div className={cn(buttonVariants({ variant: "link", size: "sm", className: "" }))}>
+              Add List
+            </div>
+          </AddList>
           {navLinks.map(link => (
             <Button variant={"link"} asChild key={link.name}>
               <Link href={link.path}>{link.name}</Link>

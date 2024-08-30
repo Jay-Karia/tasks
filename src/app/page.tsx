@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import TasksOverview from "@/components/tasks-overview";
+import AddList from "@/components/add-list";
+import { buttonVariants } from "@/components/ui/button";
 
 const primaryFont = localFont({
   src: "../../public/fonts/font.woff2",
@@ -24,9 +26,11 @@ export default function Home() {
         <p className="text-center text-sm text-muted-foreground">A simple task manager.</p>
       </div>
       <div className="mt-8 flex gap-4">
-        <Button size={"sm"} variant={"primary"} asChild>
-          <Link href="/add">Add List</Link>
-        </Button>
+        <AddList>
+          <div className={cn(buttonVariants({ variant: "primary", size: "sm", className: "" }))}>
+            Add List
+          </div>
+        </AddList>
         <Button size={"sm"} variant={"outline"} asChild>
           <Link href="https://github.com/Jay-Karia/tasks" target="_blank">
             <FaGithub className="mr-2" />

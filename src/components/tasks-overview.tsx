@@ -28,7 +28,7 @@ export default function TasksOverview() {
         ) : query.isError ? (
           <div>Error: {query.error.message}</div>
         ) : query.data && query.data?.length > 0 ? (
-          <div className="mx-24 flex flex-wrap gap-12 p-4">
+          <div className="mx-24 flex flex-wrap gap-12 p-4 justify-center items-center">
             {query.data.map(list => {
               return (
                 <div key={list.id}>
