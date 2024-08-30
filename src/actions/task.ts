@@ -2,19 +2,24 @@
 
 import prisma from "@/lib/db";
 import { Task } from "@/types/task";
+import { getUserId } from "@/lib/user";
+import { isMyList } from "@/lib/list";
 
 export async function createTask(
   title: string,
   description: string,
   listId: string
 ): Promise<Task> {
+  const userId = await getUserId();
+  const owner = await isMyList(listId);
+  if (!owner) throw new Error("Not the owner of list");
   return await prisma.task.create({
     data: {
       title,
       description,
       listId,
       completed: false,
-      userId: "",
+      userId,
     },
   });
 }
@@ -24,8 +29,10 @@ export async function updateTask(
   title: string,
   description: string,
   completed: boolean
-): Promise<Task> {
-  return await prisma.task.update({
+): Promise<Task | null> {
+  const userId = await getUserId();
+
+  const task = await prisma.task.update({
     where: {
       id,
     },
@@ -35,38 +42,60 @@ export async function updateTask(
       completed,
     },
   });
+
+  if (!task) return null;
+  if (task.userId !== userId) return null;
+
+  return task;
 }
 
-export async function deleteTask(id: string): Promise<Task> {
-  return await prisma.task.delete({
+export async function deleteTask(id: string): Promise<Task | null> {
+  const userId = await getUserId();
+  const task = await prisma.task.delete({
     where: {
       id,
     },
   });
+
+  if (!task) return null;
+  if (task.userId !== userId) return null;
+
+  return task;
 }
 
 export async function getTask(id: string): Promise<Task | null> {
-  return await prisma.task.findUnique({
+  const userId = await getUserId();
+  const task = await prisma.task.findUnique({
     where: {
       id,
+      userId,
     },
   });
+  return task;
 }
 
 export async function getTasksByListId(listId: string): Promise<Task[]> {
+  const userId = await getUserId();
   return await prisma.task.findMany({
     where: {
       listId,
+      userId,
     },
   });
 }
 
 export async function getAllTasks(): Promise<Task[]> {
-  return await prisma.task.findMany();
+  const userId = await getUserId();
+  return await prisma.task.findMany({
+    where: {
+      userId,
+    },
+  });
 }
 
-export async function completeTask(id: string): Promise<Task> {
-  return await prisma.task.update({
+export async function completeTask(id: string): Promise<Task | null> {
+  const userId = await getUserId();
+  const task = await prisma.task.update({
     where: {
       id,
     },
@@ -74,10 +103,14 @@ export async function completeTask(id: string): Promise<Task> {
       completed: true,
     },
   });
+  if (!task) return null;
+  if (task.userId !== userId) return null;
+  return task;
 }
 
-export async function uncompleteTask(id: string): Promise<Task> {
-  return await prisma.task.update({
+export async function uncompleteTask(id: string): Promise<Task | null> {
+  const userId = await getUserId();
+  const task = await prisma.task.update({
     where: {
       id,
     },
@@ -85,4 +118,7 @@ export async function uncompleteTask(id: string): Promise<Task> {
       completed: false,
     },
   });
+  if (!task) return null;
+  if (task.userId !== userId) return null;
+  return task;
 }

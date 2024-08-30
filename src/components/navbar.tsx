@@ -6,7 +6,7 @@ import Menu from "./menu";
 
 export default function Navbar() {
   const navLinks = [
-    { name: "Add Task", path: "/add" },
+    { name: "Add List", path: "/add" },
     { name: "All Tasks", path: "/tasks" },
   ];
 

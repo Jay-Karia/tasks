@@ -6,6 +6,7 @@ type Task = {
   listId: string;
   createdAt: Date;
   updatedAt: Date;
+  userId: string;
 };
 
 export type { Task };

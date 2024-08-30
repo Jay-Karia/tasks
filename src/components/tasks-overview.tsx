@@ -2,8 +2,9 @@
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
-import { useQuery } from "@tanstack/react-query";
-import { getLists } from "@/actions/list";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { createList, getLists } from "@/actions/list";
+import { createTask } from "@/actions/task";
 
 const primaryFont = localFont({
   src: "./../../public/fonts/font.woff2",
@@ -13,6 +14,12 @@ export default function TasksOverview() {
   const query = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => await getLists(),
+  });
+
+  const addList = useMutation({
+    mutationKey: ["addList"],
+    mutationFn: async () =>
+      await createTask("list title", "description", "66d136f945bf9047e8d424e2"),
   });
 
   return (
@@ -30,6 +37,14 @@ export default function TasksOverview() {
           <div>{query.data && query.data?.length > 0 ? <>Tasks found</> : <>No tasks found</>}</div>
         )}
       </div>
+
+      <button
+        onClick={() => {
+          addList.mutate();
+        }}
+      >
+        New task
+      </button>
     </div>
   );
 }

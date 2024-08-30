@@ -6,6 +6,7 @@ type List = {
   tasks?: Task[];
   createdAt: Date;
   updatedAt: Date;
+  userId: string;
 };
 
 export type { List };
