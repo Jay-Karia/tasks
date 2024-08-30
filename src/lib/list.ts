@@ -3,7 +3,7 @@ import { getList } from "@/actions/list";
 
 export async function getListOwner(id: string) {
   const list = await getList(id);
-  if (!list) throw new Error("No list found");
+  if (!list) return null
 
   return list.userId;
 }

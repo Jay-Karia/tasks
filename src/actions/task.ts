@@ -9,10 +9,10 @@ export async function createTask(
   title: string,
   description: string,
   listId: string
-): Promise<Task> {
+): Promise<Task | null> {
   const userId = await getUserId();
   const owner = await isMyList(listId);
-  if (!owner) throw new Error("Not the owner of list");
+  if (!owner || !userId) return null
   return await prisma.task.create({
     data: {
       title,
@@ -65,6 +65,7 @@ export async function deleteTask(id: string): Promise<Task | null> {
 
 export async function getTask(id: string): Promise<Task | null> {
   const userId = await getUserId();
+  if (!userId) return null
   const task = await prisma.task.findUnique({
     where: {
       id,
@@ -74,8 +75,9 @@ export async function getTask(id: string): Promise<Task | null> {
   return task;
 }
 
-export async function getTasksByListId(listId: string): Promise<Task[]> {
+export async function getTasksByListId(listId: string): Promise<Task[] | null> {
   const userId = await getUserId();
+  if (!userId) return null
   return await prisma.task.findMany({
     where: {
       listId,
@@ -84,8 +86,9 @@ export async function getTasksByListId(listId: string): Promise<Task[]> {
   });
 }
 
-export async function getAllTasks(): Promise<Task[]> {
+export async function getAllTasks(): Promise<Task[] | null> {
   const userId = await getUserId();
+  if (!userId) return null
   return await prisma.task.findMany({
     where: {
       userId,

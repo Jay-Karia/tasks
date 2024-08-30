@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import QueryProvider from "@/components/providers/QueryProvider";
+import { SessionProvider } from "next-auth/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,10 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("h-full w-full", inter.className)}>
-        <QueryProvider>
-          <Navbar />
-          {children}
-        </QueryProvider>
+        <SessionProvider>
+          <QueryProvider>
+            <Navbar />
+            {children}
+          </QueryProvider>
+        </SessionProvider>
       </body>
     </html>
   );

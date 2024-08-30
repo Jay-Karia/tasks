@@ -5,8 +5,10 @@ import Menu from "./menu";
 import AddList from "./add-list";
 import { buttonVariants, Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { auth } from "@/auth";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await auth()
   const navLinks = [{ name: "All Tasks", path: "/tasks" }];
 
   return (
@@ -16,16 +18,18 @@ export default function Navbar() {
           <Logo />
         </Link>
         <div className="hidden sm:flex">
-          <AddList>
-            <div className={cn(buttonVariants({ variant: "link", size: "sm", className: "" }))}>
-              Add List
-            </div>
-          </AddList>
-          {navLinks.map(link => (
-            <Button variant={"link"} asChild key={link.name}>
-              <Link href={link.path}>{link.name}</Link>
-            </Button>
-          ))}
+          {session && <>
+            <AddList>
+              <div className={cn(buttonVariants({ variant: "link", size: "sm", className: "" }))}>
+                Add List
+              </div>
+            </AddList>
+            {navLinks.map(link => (
+              <Button variant={"link"} asChild key={link.name}>
+                <Link href={link.path}>{link.name}</Link>
+              </Button>
+            ))}</>}
+
         </div>
       </div>
       <div className="hidden sm:block">

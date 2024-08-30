@@ -5,12 +5,14 @@ import { FaGithub } from "react-icons/fa";
 import TasksOverview from "@/components/tasks-overview";
 import AddList from "@/components/add-list";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { auth } from "@/auth";
 
 const primaryFont = localFont({
   src: "../../public/fonts/font.woff2",
 });
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
   return (
     <div className="mt-4 flex h-max w-full flex-col items-center justify-center">
       <div className="flex flex-col items-center">
@@ -25,11 +27,11 @@ export default function Home() {
         <p className="text-center text-sm text-muted-foreground">A simple task manager.</p>
       </div>
       <div className="mt-8 flex gap-4">
-        <AddList>
+        {session && <AddList>
           <div className={cn(buttonVariants({ variant: "primary", size: "sm", className: "" }))}>
             Add List
           </div>
-        </AddList>
+        </AddList>}
         <Button size={"sm"} variant={"outline"} asChild>
           <Link href="https://github.com/Jay-Karia/tasks" target="_blank">
             <FaGithub className="mr-2" />
@@ -37,8 +39,6 @@ export default function Home() {
           </Link>
         </Button>
       </div>
-
-      <TasksOverview />
-    </div>
+      {session && <TasksOverview />}    </div>
   );
 }
