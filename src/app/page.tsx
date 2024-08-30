@@ -25,7 +25,7 @@ export default function Home() {
       </div>
       <div className="mt-8 flex gap-4">
         <Button size={"sm"} variant={"primary"} asChild>
-          <Link href="/add">Add Task</Link>
+          <Link href="/add">Add List</Link>
         </Button>
         <Button size={"sm"} variant={"outline"} asChild>
           <Link href="https://github.com/Jay-Karia/tasks" target="_blank">

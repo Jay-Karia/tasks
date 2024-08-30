@@ -20,6 +20,9 @@ export async function getLists(): Promise<List[]> {
     where: {
       userId,
     },
+    include: {
+      tasks: true,
+    },
   });
 }
 
