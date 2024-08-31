@@ -1,7 +1,7 @@
 import { List } from "@/types/list";
 import Link from "next/link";
 import { truncate } from "@/lib/truncate";
-import DeleteTaskButton from "./delete-task-button";
+import DeleteListButton from "./delete-list-button";
 
 export default function ListOverview({ list }: { list: List }) {
   if (!list.tasks) return null;
@@ -18,7 +18,7 @@ export default function ListOverview({ list }: { list: List }) {
     <div className="flex w-56 flex-col rounded-lg border sm:w-64">
       <Link href={`/list/${list.id}`}>
         <div className="mb-2 border-b bg-slate-100 p-4 hover:cursor-pointer hover:bg-blue-100">
-          <p className="leading-7 [&:not(:first-child)]:mt-6">{truncate(list.title)}</p>
+          <p className="leading-7 [&:not(:first-child)]:mt-6">{truncate(list.title, 20)}</p>
         </div>
       </Link>
       <div className="flex items-center gap-2 px-4 py-2">
@@ -30,7 +30,7 @@ export default function ListOverview({ list }: { list: List }) {
         <p className="text-sm text-muted-foreground">{getRemaining()}</p>
       </div>
       <div className="flex w-full justify-end px-4 pb-2">
-        <DeleteTaskButton listId={list.id} />
+        <DeleteListButton listId={list.id} />
       </div>
     </div>
   );

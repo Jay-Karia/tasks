@@ -7,7 +7,6 @@ import { isMyList } from "@/lib/list";
 
 export async function createTask(
   title: string,
-  description: string,
   listId: string
 ): Promise<Task | null> {
   const userId = await getUserId();
@@ -16,7 +15,6 @@ export async function createTask(
   return await prisma.task.create({
     data: {
       title,
-      description,
       listId,
       completed: false,
       userId,
@@ -27,7 +25,6 @@ export async function createTask(
 export async function updateTask(
   id: string,
   title: string,
-  description: string,
   completed: boolean
 ): Promise<Task | null> {
   const userId = await getUserId();
@@ -38,7 +35,6 @@ export async function updateTask(
     },
     data: {
       title,
-      description,
       completed,
     },
   });

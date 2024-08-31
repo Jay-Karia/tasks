@@ -12,9 +12,9 @@ export default function SidebarItemContent() {
     <>
       <ScrollArea className="h-[90%]">
         {lists.isError ? (
-          <div className="p-4">{lists.error.message}</div>
+          <div className="p-4 md:w-56 lg:w-[270px]">{lists.error.message}</div>
         ) : lists.isLoading ? (
-          <div className="p-4">Loading ...</div>
+          <div className="p-4 md:w-56 lg:w-[270px]">Loading ...</div>
         ) : (
           <div className="mt-4 flex flex-col">
             {lists.data?.map(list => {
