@@ -1,54 +1,32 @@
 "use client";
 
-import localFont from "next/font/local";
-import { ClassNameValue } from "tailwind-merge";
+import SidebarItemContent from "./sidebar-item-content";
 import { cn } from "@/lib/utils";
-import SidebarItem from "./sidebar-item";
-import { useQuery } from "@tanstack/react-query";
-import { getLists } from "@/actions/list";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ClassNameValue } from "tailwind-merge";
+import { FcMenu } from "react-icons/fc";
 
-const headingFont = localFont({
-  src: "./../../public/fonts/font.woff2",
-});
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 type Props = {
   className?: ClassNameValue;
 };
 
 export default function Sidebar({ className }: Props) {
-  const lists = useQuery({
-    queryKey: ["lists"],
-    queryFn: async () => await getLists(),
-  });
-
   return (
-    <div className={cn("hidden h-full w-56 gap-8 border-r sm:flex sm:flex-col md:w-72", className)}>
-      <h4
-        className={cn(
-          "scroll-m-20 p-4 pb-0 text-xl font-semibold tracking-tight",
-          headingFont.className
-        )}
-      >
-        My Lists
-      </h4>
-      <ScrollArea className="h-[90%]">
-        {lists.isError ? (
-          <div className="p-4">{lists.error.message}</div>
-        ) : lists.isLoading ? (
-          <div className="p-4">Loading ...</div>
-        ) : (
-          <div className="flex flex-col">
-            {lists.data?.map(list => {
-              return (
-                <div key={list.id}>
-                  <SidebarItem list={list} />
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </ScrollArea>
-    </div>
+    <>
+      <div className="hidden sm:block">
+        <div className={cn("flex h-full w-max min-w-12 flex-col gap-8 border-r", className)}>
+          <Collapsible defaultOpen={true} className="mt-4 w-max min-w-12">
+            <CollapsibleTrigger className="ml-[13px]">
+              <FcMenu size={22} />
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarItemContent />
+            </CollapsibleContent>
+          </Collapsible>
+        </div>
+      </div>
+      <div className="block sm:hidden">{/* Drawer */}</div>
+    </>
   );
 }

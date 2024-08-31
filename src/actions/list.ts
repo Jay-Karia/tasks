@@ -6,6 +6,7 @@ import { getUserId } from "@/lib/user";
 
 export async function createList(title: string): Promise<List | null> {
   const userId = await getUserId();
+  if (!userId) return null;
   return await prisma.list.create({
     data: {
       title,
@@ -14,8 +15,9 @@ export async function createList(title: string): Promise<List | null> {
   });
 }
 
-export async function getLists(): Promise<List[]> {
+export async function getLists(): Promise<List[] | null> {
   const userId = await getUserId();
+  if (!userId) return null;
   return await prisma.list.findMany({
     where: {
       userId,
