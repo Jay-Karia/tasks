@@ -17,8 +17,10 @@ export default function AllTasks({ listId }: Props) {
         <>Loading ...</>
       ) : query.isError ? (
         <>{query.error}</>
+      ) : query.data && query.data.length > 0 ? (
+        <>{JSON.stringify(query.data)}</>
       ) : (
-        query.data && query.data.length > 0 ? <>{JSON.stringify(query.data)}</> : <>No tasks found</>
+        <>No tasks found</>
       )}
     </div>
   );

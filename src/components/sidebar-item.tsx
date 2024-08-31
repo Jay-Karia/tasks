@@ -30,11 +30,11 @@ export default function SidebarItem({ list }: Props) {
     <Link href={`/list/${list.id}`}>
       <div
         className={cn(
-          "flex items-center px-4 py-4 hover:cursor-pointer md:w-56 lg:w-[270px]",
+          "flex min-w-56 items-center py-4 pr-2 hover:cursor-pointer md:w-56 lg:w-[270px]",
           isCurrentList() ? "border-l-2 border-blue-600 bg-blue-50" : "hover:bg-slate-50"
         )}
       >
-        <PiListBullets className="mr-2" size={20} />
+        <PiListBullets className="min-w-12" size={20} />
         <small className="text-sm font-normal leading-none">{truncate(list.title, 20)}</small>
       </div>
     </Link>

@@ -12,9 +12,9 @@ import { AiOutlineEllipsis } from "react-icons/ai";
 
 export default function ListPageHeader({ list }: { list: List }) {
   return (
-    <div className="flex items-center gap-2 text-blue-700 w-[90%]">
-      <PiListBullets size={25}/>
-      <h4 className={"scroll-m-20 md:text-lg font-medium tracking-tight text-base flex flex-wrap break-words"}>{list.title}</h4>
+    <div className="flex w-[90%] items-center gap-2 text-blue-700">
+      <PiListBullets size={25} />
+      <h4 className={"scroll-m-20 text-lg font-medium tracking-tight"}>{list.title}</h4>
       <div className="ml-2 flex items-center justify-center">
         <DropdownMenu>
           <DropdownMenuTrigger>
