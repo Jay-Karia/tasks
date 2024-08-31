@@ -5,10 +5,7 @@ import { Task } from "@/types/task";
 import { getUserId } from "@/lib/user";
 import { isMyList } from "@/lib/list";
 
-export async function createTask(
-  title: string,
-  listId: string
-): Promise<Task | null> {
+export async function createTask(title: string, listId: string): Promise<Task | null> {
   const userId = await getUserId();
   const owner = await isMyList(listId);
   if (!owner || !userId) return null;
