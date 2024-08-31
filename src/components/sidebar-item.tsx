@@ -35,7 +35,7 @@ export default function SidebarItem({ list }: Props) {
         )}
       >
         <PiListBullets className="mr-2" size={20} />
-        <small className="text-sm font-normal leading-none">{truncate(list.title, 25)}</small>
+        <small className="text-sm font-normal leading-none">{truncate(list.title, 20)}</small>
       </div>
     </Link>
   );

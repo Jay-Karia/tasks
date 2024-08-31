@@ -24,7 +24,7 @@ export default function ListPage({ params }: { params: { id: string } }) {
           <div className="flex flex-col gap-8">
             <ListPageHeader list={list.data} />
             <AddTask listId={list.data.id} />
-            <AllTasks listId={list.data.id} />
+            {/* <AllTasks listId={list.data.id} /> */}
           </div>
         )
       )}
