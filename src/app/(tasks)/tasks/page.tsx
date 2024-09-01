@@ -3,7 +3,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllTasks } from "@/actions/task";
 import Link from "next/link";
-import { Checkbox } from "@/components/ui/checkbox";
 import Task from "@/components/task";
 
 export default function TasksPage() {
@@ -25,7 +24,7 @@ export default function TasksPage() {
         <div className="flex flex-col bg-white">
           {query.data.map(task => {
             return (
-              <Link href={`/list/${task.listId}`}>
+              <Link href={`/list/${task.listId}`} key={task.id}>
                 <Task task={task} viewOnly />
               </Link>
             );

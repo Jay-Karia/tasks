@@ -17,7 +17,7 @@ import DeleteTask from "./delete-task";
 
 type Props = {
   task: TaskType;
-  viewOnly: boolean;
+  viewOnly?: boolean;
 };
 
 export default function Task({ task, viewOnly = false }: Props) {
