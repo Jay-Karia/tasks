@@ -6,7 +6,6 @@ import { getList } from "@/actions/list";
 import ListPageHeader from "@/components/list-page-header";
 import AddTask from "@/components/add-task";
 import AllTasks from "@/components/all-tasks";
-
 export default function ListPage({ params }: { params: { id: string } }) {
   const list = useQuery({
     queryKey: ["list", "lists"],

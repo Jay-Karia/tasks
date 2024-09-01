@@ -1,5 +1,6 @@
 import { List } from "@/types/list";
 import DeleteListButton from "./delete-list-button";
+import RenameList from "./rename-list";
 
 import { PiListBullets } from "react-icons/pi";
 import {
@@ -24,7 +25,9 @@ export default function ListPageHeader({ list }: { list: List }) {
               <AiOutlineEllipsis size={20} />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem>Rename</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <RenameList listId={list.id} />
+              </DropdownMenuItem>
               <DropdownMenuItem>
                 <DeleteListButton
                   listId={list.id}
