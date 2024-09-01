@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write src/**/*.*",
@@ -12,7 +12,8 @@
     "prepare": "husky",
     "master": "npm run format && npm run lint && npm run build && npm start",
     "db:push": "npx prisma db push",
-    "emergency": "git add . && git commit -m \"chore: emergency commit\" -m \"This commit was generated due to an emergency!\" && git push"
+    "emergency": "git add . && git commit -m \"chore: emergency commit\" -m \"This commit was generated due to an emergency!\" && git push",
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.4.2",
