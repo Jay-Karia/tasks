@@ -14,14 +14,13 @@ export default function AllTasks({ listId }: Props) {
   });
 
   return (
-    // <div>
     <ScrollArea className="h-full">
       {query.isLoading ? (
         <>Loading ...</>
       ) : query.isError ? (
         <>{query.error}</>
       ) : query.data && query.data.length > 0 ? (
-        <div className="flex w-[90%] flex-col rounded-sm border border-t-0 bg-white shadow-sm">
+        <div className="flex flex-col rounded-sm border border-t-0 bg-white shadow-sm">
           {query.data.map(task => {
             return (
               <div key={task.id}>
@@ -33,7 +32,6 @@ export default function AllTasks({ listId }: Props) {
       ) : (
         <>No tasks found</>
       )}
-      {/* </div> */}
     </ScrollArea>
   );
 }

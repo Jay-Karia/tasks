@@ -37,7 +37,7 @@ export default function AddTask({ listId }: Props) {
     },
   });
   return (
-    <div className="w-[90%]">
+    <div className="sm:w-[100%]">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField

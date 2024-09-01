@@ -17,9 +17,10 @@ import DeleteTask from "./delete-task";
 
 type Props = {
   task: TaskType;
+  viewOnly: boolean;
 };
 
-export default function Task({ task }: Props) {
+export default function Task({ task, viewOnly = false }: Props) {
   const queryClient = useQueryClient();
   const isCompleted = task.completed;
   const mutation = useMutation({
@@ -38,29 +39,32 @@ export default function Task({ task }: Props) {
       <div className="flex aspect-square items-center justify-center p-4 outline-1 outline-gray-300 hover:outline">
         <Checkbox
           onClick={() => {
-            mutation.mutate();
+            if (!viewOnly) mutation.mutate();
           }}
           checked={task.completed}
+          disabled={viewOnly}
         />
       </div>
       <div className="flex w-full items-center justify-start outline-1 outline-gray-300 hover:outline">
         <small className="px-4 text-sm font-normal leading-none">{task.title}</small>
       </div>
-      <div className="mx-2 flex items-center justify-center p-2 outline-gray-300">
-        <DropdownMenu>
-          <DropdownMenuTrigger className="hover:cursor-pointer">
-            <HiMiniEllipsisHorizontal className="text-blue-700" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem asChild>
-              <RenameTask task={task} />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <DeleteTask taskId={task.id} listId={task.listId} />
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
+      {!viewOnly && (
+        <div className="mx-2 flex items-center justify-center p-2 outline-gray-300">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="hover:cursor-pointer">
+              <HiMiniEllipsisHorizontal className="text-blue-700" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem asChild>
+                <RenameTask task={task} />
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <DeleteTask taskId={task.id} listId={task.listId} />
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      )}
     </div>
   );
 }

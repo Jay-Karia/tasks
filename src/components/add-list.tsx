@@ -20,9 +20,7 @@ export default function AddList({ children }: { children: React.ReactNode }) {
         <DialogHeader>
           <DialogTitle>Add new List</DialogTitle>
         </DialogHeader>
-        <div>
-          <ListForm />
-        </div>
+        <ListForm />
       </DialogContent>
     </Dialog>
   );

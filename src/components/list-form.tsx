@@ -55,7 +55,6 @@ export default function ListForm() {
               <FormControl>
                 <Input {...field} />
               </FormControl>
-              <FormDescription>Add list title</FormDescription>
               <FormMessage />
             </FormItem>
           )}
