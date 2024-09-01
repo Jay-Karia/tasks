@@ -1,3 +1,1 @@
-export const publicRoutes = [
-    "/"
-]
+export const publicRoutes = ["/"];

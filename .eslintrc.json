@@ -1,10 +1,16 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals"],
   "rules": {
     "no-unused-vars": "warn",
     "no-duplicate-imports": "error",
     "camelcase": "warn",
-    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "func-style": [
+      "error",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
     "no-var": "error",
     "no-console": "warn",
     "max-statements": ["warn", 10]

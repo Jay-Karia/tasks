@@ -4,6 +4,15 @@ import { Task as TaskType } from "@/types/task";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { completeTask, uncompleteTask } from "@/actions/task";
+import { HiMiniEllipsisHorizontal } from "react-icons/hi2";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import DeleteTask from "./delete-task";
 
 type Props = {
   task: TaskType;
@@ -35,6 +44,19 @@ export default function Task({ task }: Props) {
       </div>
       <div className="flex w-full items-center justify-start outline-1 outline-gray-300 hover:outline">
         <small className="px-4 text-sm font-normal leading-none">{task.title}</small>
+      </div>
+      <div className="mx-2 flex items-center justify-center p-2 outline-gray-300">
+        <DropdownMenu>
+          <DropdownMenuTrigger className="hover:cursor-pointer">
+            <HiMiniEllipsisHorizontal className="text-blue-700" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem>Rename</DropdownMenuItem>
+            <DropdownMenuItem>
+              <DeleteTask taskId={task.id} listId={task.listId} />
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );

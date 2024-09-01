@@ -13,14 +13,14 @@ export default function ListPage({ params }: { params: { id: string } }) {
   });
 
   return (
-    <div className="p-2">
+    <div className="h-full p-2">
       {list.isLoading ? (
         <>Loading ...</>
       ) : list.isError ? (
         <>{list.error}</>
       ) : (
         list.data && (
-          <div className="flex flex-col gap-8">
+          <div className="flex h-full flex-col gap-8">
             <ListPageHeader list={list.data} />
             <AddTask listId={list.data.id} />
             <AllTasks listId={list.data.id} />
