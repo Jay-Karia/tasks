@@ -13,9 +13,7 @@ export default function TasksPage() {
 
   return (
     <div className="flex h-full w-full flex-col gap-4 p-2">
-      <h4 className="overflow-hidden break-words text-lg font-medium tracking-tight text-blue-700">
-        All Tasks
-      </h4>
+      <h4 className="text-lg font-medium tracking-tight text-blue-700">All Tasks</h4>
       {query.isLoading ? (
         <>Loading ...</>
       ) : query.isError ? (

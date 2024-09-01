@@ -1,6 +1,6 @@
 {
   "name": "tasks",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,7 +10,7 @@
     "format": "prettier --write src/**/*.*",
     "format:all": "prettier --write .",
     "prepare": "husky",
-    "master": "npm run format && npm run lint && npm run build && npm start",
+    "master": "npm run format && npm run build && npm start",
     "db:push": "npx prisma db push",
     "emergency": "git add . && git commit -m \"chore: emergency commit\" -m \"This commit was generated due to an emergency!\" && git push",
     "postinstall": "npx prisma generate"

@@ -35,7 +35,7 @@ export default function Task({ task, viewOnly = false }: Props) {
   });
 
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <div className="flex aspect-square items-center justify-center p-4 outline-1 outline-gray-300 hover:outline">
         <Checkbox
           onClick={() => {
@@ -46,7 +46,9 @@ export default function Task({ task, viewOnly = false }: Props) {
         />
       </div>
       <div className="flex w-full items-center justify-start outline-1 outline-gray-300 hover:outline">
-        <small className="px-4 text-sm font-normal leading-none">{task.title}</small>
+        <small className="w-[90%] break-words px-4 text-sm font-normal leading-none">
+          {task.title}
+        </small>
       </div>
       {!viewOnly && (
         <div className="mx-2 flex items-center justify-center p-2 outline-gray-300">

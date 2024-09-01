@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTasksByListId } from "@/actions/task";
 import Task from "./task";
-import { ScrollArea } from "./ui/scroll-area";
 
 type Props = {
   listId: string;
@@ -14,16 +13,16 @@ export default function AllTasks({ listId }: Props) {
   });
 
   return (
-    <ScrollArea className="h-full">
+    <div className="h-[90%] w-full">
       {query.isLoading ? (
         <>Loading ...</>
       ) : query.isError ? (
         <>{query.error}</>
       ) : query.data && query.data.length > 0 ? (
-        <div className="flex flex-col rounded-sm border border-t-0 bg-white shadow-sm">
+        <div className="shadow-s flex flex-col rounded-sm border border-t-0 bg-white">
           {query.data.map(task => {
             return (
-              <div key={task.id}>
+              <div key={task.id} className="">
                 <Task task={task} />
               </div>
             );
@@ -32,6 +31,6 @@ export default function AllTasks({ listId }: Props) {
       ) : (
         <>No tasks found</>
       )}
-    </ScrollArea>
+    </div>
   );
 }

@@ -13,7 +13,7 @@ export default function ListPage({ params }: { params: { id: string } }) {
   });
 
   return (
-    <div className="h-full p-2">
+    <div className="flex h-full w-full flex-col p-2">
       {list.isLoading ? (
         <>Loading ...</>
       ) : list.isError ? (
