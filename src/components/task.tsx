@@ -5,6 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { completeTask, uncompleteTask } from "@/actions/task";
 import { HiMiniEllipsisHorizontal } from "react-icons/hi2";
+import RenameTask from "./rename-task";
 
 import {
   DropdownMenu,
@@ -51,7 +52,9 @@ export default function Task({ task }: Props) {
             <HiMiniEllipsisHorizontal className="text-blue-700" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>Rename</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <RenameTask task={task} />
+            </DropdownMenuItem>
             <DropdownMenuItem>
               <DeleteTask taskId={task.id} listId={task.listId} />
             </DropdownMenuItem>

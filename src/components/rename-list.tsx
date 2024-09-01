@@ -72,13 +72,12 @@ export default function RenameList({ listId }: { listId: string }) {
                       <FormControl>
                         <Input {...field} />
                       </FormControl>
-                      <FormDescription>Add list title</FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
                 <Button type="submit" variant={"primary"}>
-                  Submit
+                  Rename
                 </Button>
               </form>
             </Form>
