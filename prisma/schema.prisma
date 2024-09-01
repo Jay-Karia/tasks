@@ -11,7 +11,7 @@ model Task {
   id        String  @id @default(auto()) @db.ObjectId @map("_id")
   title     String
   completed Boolean @default(false)
-  list      List   @relation(fields: [listId], references: [id])
+  list      List   @relation(fields: [listId], references: [id], onDelete: Cascade)
   listId    String @map("list_id") @db.ObjectId
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

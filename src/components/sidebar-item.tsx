@@ -30,7 +30,7 @@ export default function SidebarItem({ list }: Props) {
     <Link href={`/list/${list.id}`}>
       <div
         className={cn(
-          "flex min-w-56 items-center py-4 pr-2 hover:cursor-pointer md:w-56 lg:w-[270px]",
+          "flex min-w-56 items-center py-4 pr-2 hover:cursor-pointer md:w-64 lg:w-[270px]",
           isCurrentList() ? "border-l-2 border-blue-600 bg-blue-50" : "hover:bg-slate-50"
         )}
       >
