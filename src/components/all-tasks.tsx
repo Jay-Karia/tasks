@@ -25,7 +25,7 @@ export default function AllTasks({ listId }: Props) {
               <div key={task.id}>
                 <Task task={task} />
               </div>
-            )
+            );
           })}
         </div>
       ) : (
