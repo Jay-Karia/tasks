@@ -1,6 +1,6 @@
-const { truncate } = require("../lib/truncate.ts");
+import { truncate } from "@/lib/truncate";
 
-describe("Truncate", () => {
+describe("truncate()", () => {
   it("can truncate extra words", () => {
     expect(truncate("1234567890123", 10)).toBe("1234567890...");
   });
